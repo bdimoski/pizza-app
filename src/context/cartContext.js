@@ -1,5 +1,4 @@
 import React, { useState, createContext, useEffect } from "react";
-import { Navigate } from "react-router";
 import ordering from "../pizzaordering/ordering";
 import Api from "../Api";
 

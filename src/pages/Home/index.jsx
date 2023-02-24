@@ -68,9 +68,9 @@ const HomePage = () => {
         ))}
       </div>
       <div id="pagination">
-        {pageNumbers.map((_page) => (
-          <button onClick={() => handleGetPage(_page)}>
-            {_page === page ? <b>{_page}</b> : _page}
+        {pageNumbers.map((page) => (
+          <button key={page} onClick={() => handleGetPage(page)}>
+            {page === page ? <b>{page}</b> : page}
           </button>
         ))}
       </div>
