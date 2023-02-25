@@ -21,6 +21,17 @@ nav a {
   margin-top: 30px;
 }
 
+#editPizza {
+  color: #fff;
+}
+
+.editForm {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  background: #052826;
+}
+
 #admin {
   color: #fff;
 }
@@ -165,3 +176,47 @@ nav a {
   margin-left: auto;
   margin-right: auto;
 }
+.progress {
+  position: relative;
+  height: 10px;
+  width: 500px;
+  border: 10px solid #00ada4;
+  border-radius: 15px;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40%;
+  margin-bottom: 100px;
+}
+.progress .color {
+  position: absolute;
+  background-color: #ffffff;
+  width: 0px;
+  height: 10px;
+  border-radius: 15px;
+  animation: progres 4s infinite linear;
+}
+.loading{
+  display: flex;
+  margin: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #f7f7f7;
+}
+@keyframes progres {
+  0% {
+    width: 0%;
+  }
+  15% {
+    width: 45%;
+  }
+  25% {
+    width: 75%;
+  }
+  35% {
+    width: 85%;
+  }
+  50% {
+    width: 100%;
+  }
+} ;

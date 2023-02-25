@@ -10,6 +10,7 @@ import Cart from "./components/Cart/Cart";
 import AdminPage from "./pages/Admin";
 import OrdersPage from "./pages/Orders";
 import TagManagerPage from "./pages/TagManager";
+import EditPizza from "./pages/EditPizza";
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
       <Routes>
         <Route path="pizza" element={<Home />}></Route>
         <Route path="pizza/:pizzaName" element={<Pizza />} />
+        <Route path="edit/:id" element={<EditPizza />}></Route>
+        <Route path="edit" element={<Home admin='true' />} />
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
         <Route path="*" element={<Navigate to="/pizza" replace />} />

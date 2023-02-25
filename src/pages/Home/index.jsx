@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import Api from "../../Api";
 import { CartContext } from "../../context/cartContext";
 
-const HomePage = () => {
-  const { pizzaProducts, cartItems, setPizzaProducts } =
+const HomePage = (props) => {
+  const { pizzaProducts, setPizzaProducts } =
     useContext(CartContext);
-  console.log(cartItems);
+  //console.log(cartItems);
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const tags = ["discount", "vege", "house-specialty"];
@@ -67,13 +67,12 @@ const HomePage = () => {
           </li>
         ))}
       </div>
-      <div id="pagination">
-        {pageNumbers.map((page) => (
-          <button key={page} onClick={() => handleGetPage(page)}>
-            {page === page ? <b>{page}</b> : page}
-          </button>
-        ))}
-      </div>
+      {pageNumbers.map((pageNumber) => (
+        <button key={pageNumber} onClick={() => handleGetPage(pageNumber)}>
+          {pageNumber === page ? <b>{pageNumber}</b> : pageNumber}
+        </button>
+      ))}
+
       <div id="pizzaMenu">
         {pizzaProducts.map((pizza) => (
           <div key={pizza._id} className="product">
@@ -88,6 +87,13 @@ const HomePage = () => {
             <Link to={pizza.name}>
               <button>Buy Pizza</button>
             </Link>
+            {props.admin ? (
+              <Link to={`/edit/${pizza._id}`}>
+                <button>Edit Pizza</button>
+              </Link>
+            ) : (
+              ""
+            )}
           </div>
         ))}
       </div>
