@@ -4,8 +4,7 @@ import Api from "../../Api";
 import { CartContext } from "../../context/cartContext";
 
 const HomePage = (props) => {
-  const { pizzaProducts, setPizzaProducts } =
-    useContext(CartContext);
+  const { pizzaProducts, setPizzaProducts } = useContext(CartContext);
   //console.log(cartItems);
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);

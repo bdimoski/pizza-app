@@ -4,55 +4,47 @@ import { TagContext } from "../../context/tagContext";
 
 const AdminPage = () => {
   const tagContext = useContext(TagContext);
-  const tags = tagContext.tags.map(_tag => _tag.tag);
+  const tags = tagContext.tags.map((t) => t.tag);
   const [name, setName] = useState("");
   const [_id, setId] = useState("");
   const [priceSmall, setPriceSmall] = useState(0);
   const [priceBig, setPriceBig] = useState(0);
-  const [image, setimage] = useState("");
+  const [image, setImage] = useState("");
   const [checkedState, setCheckedState] = useState(
     new Array(tags.length).fill(false)
   );
+  console.log("tags:", tags);
+  console.log("checkedState:", checkedState);
   const handleIdChange = (e) => setId(e.target.value);
   const handleNameChange = (e) => setName(e.target.value);
   const handlePriceSmallChange = (e) => setPriceSmall(e.target.value);
   const handlePriceBigChange = (e) => setPriceBig(e.target.value);
-  const handleImageChange = (e) => setimage(e.target.value);
-  const handleCheckedChange = (position) => {
-    const updatedCheckedState = checkedState.map((item, index) =>
-      index === position ? !item : item
-    );
-    setCheckedState(updatedCheckedState);
-  };
-
-  //Base64 nacin na upload
-  //   const getBase64 = (file, callback) => {
-  //     const reader = new FileReader();
-  //     reader.readAsDataURL();
-  //     reader.onload = () => {
-  //         callback(reader.result);
-  //     }
-  //   }
-  //   const handleImageUpload = (e) => {
-  //         const file = e.target.files[0];
-  //         getBase64(file, setimage);
-  //   }
+  const handleImageChange = (e) => setImage(e.target.value);
 
   const handleSubmit = () => {
     const newTags = checkedState
       .map((value, index) => (value ? tags[index] : null))
       .filter((tag) => tag !== null);
+    console.log("newTags:", newTags);
     const pizza = { _id, name, priceSmall, priceBig, image, tags: newTags };
+    console.log("image64", image);
     Api()
       .post("/pizzas", pizza)
-      .then(() => alert("Success"))
+      .then(() => alert("Success!"))
       .catch((error) => console.log(error));
   };
+
+  const handleCheckedChange = (position) => {
+    const updatedCheckedState = [...checkedState]; // Create a copy of the array
+    updatedCheckedState[position] = !updatedCheckedState[position]; // Modify the copy
+    setCheckedState(updatedCheckedState); // Set the new state
+  };
+
   return (
     <div id="admin">
       <label>
         _id:
-        <input type="text" name="id" onChange={handleIdChange} />
+        <input type="text" name="_id" onChange={handleIdChange} />
       </label>
       <label>
         Име на пица:
@@ -70,15 +62,14 @@ const AdminPage = () => {
         Цена за голема пица:
         <input type="number" name="priceBig" onChange={handlePriceBigChange} />
       </label>
-
-      <label htmlFor="">
-        Линк до слика
+      <label>
+        Линк до слика:
         <input type="text" name="image" onChange={handleImageChange} />
       </label>
       {/* <label>
-            Слика:
-            <input type="file" name="file" onChange={handleImageUpload}/>
-        </label> */}
+        Слика:
+        <input type="file" name="file" onChange={handleImageUpload} />
+      </label> */}
       <div id="tags">
         {tags.map((tag, index) => (
           <li key={tag}>
@@ -87,7 +78,7 @@ const AdminPage = () => {
               <input
                 type="checkbox"
                 value={tag}
-                checked={checkedState[index]}
+                checked={checkedState[index] || false}
                 onChange={() => handleCheckedChange(index)}
               />
             </label>

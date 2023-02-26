@@ -6,7 +6,7 @@ import { TagContext } from "../../context/tagContext";
 
 const EditPizza = () => {
   const { id } = useParams();
-  const [pizza, setPizza] = useState({});
+  const [pizza, setPizza] = useState({ tags: [] });
   const [loading, setLoading] = useState(false);
   const tagContext = useContext(TagContext);
   const { pizzaProducts, setPizzaProducts } = useContext(CartContext);
@@ -23,33 +23,83 @@ const EditPizza = () => {
     const newTags = updatedCheckedState
       .map((isChecked, index) => (isChecked ? tags[index] : null))
       .filter(Boolean);
-    setPizza({ ...pizza, tags: newTags });
+    setPizza({ ...pizza, tags: newTags.length ? newTags : [] });
     console.log("Tags: ", tags);
     console.log("New Tags", newTags);
   };
-  useEffect(function () {
-    Api()
-      .get(`/pizzas/${id}`)
-      .then((response) => {
+
+  useEffect(() => {
+    async function fetchPizza() {
+      try {
+        setLoading(true);
+        const response = await Api().get(`/pizzas/${id}`);
         setPizza(response.data);
-      });
-  }, []);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchPizza();
+  }, [id]);
+
+  useEffect(() => {
+    const tags = tagContext.tags.map((t) => t.tag);
+    if (!pizza.tags) {
+      setPizza({ ...pizza, tags: tags });
+    }
+    const tagChecks = tags.map((tag) => {
+      if (pizza.tags && pizza.tags.includes(tag)) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+    setCheckedState(tagChecks);
+  }, [tagContext.tags, pizza.tags, pizza]);
+
   const savePizza = async () => {
-    //console.log("Saving pizza...");
+    // Validate user inputs
+    if (!pizza.name.trim()) {
+      alert("Please enter a valid pizza name.");
+      return;
+    }
+    const priceRegex = /^[1-9]\d*$/;
+    console.log(pizza);
+    if (!priceRegex.test(pizza.priceSmall, pizza.priceBig)) {
+      alert("Please enter a valid price.");
+      return;
+    }
+
     setLoading(true);
-    const response = await Api().put(`/pizzas/${id}`, pizza);
-    const { data } = response;
-    //console.log(response);
+
+    // Fetch all pizzas
+    const response = await Api().get("/pizzas");
+    const pizzas = response.data;
+
+    // Check if a pizza with the same ID already exists
+    if (pizzas.some((p) => p._id === id && p._id !== pizza._id)) {
+      alert(
+        `A pizza with ID ${id} already exists. Please choose a different ID.`
+      );
+      setLoading(false);
+      return;
+    }
+
+    // Send the PUT request
+    const putResponse = await Api().put(`/pizzas/${id}`, pizza);
+    const { data } = putResponse;
     if (data.ok === 1) {
       const newPizzas = pizzaProducts.map((_pizza) =>
         _pizza._id === id ? pizza : _pizza
       );
       setPizzaProducts(newPizzas);
-      //alert("Successfully saved pizza");
+      alert("Successfully updated pizza");
     }
     setLoading(false);
   };
-  const handleFromChange = (e, key) => {
+
+  const handleInputChange = (e, key) => {
     const newPizza = { ...pizza };
     newPizza[key] = e.target.value;
     setPizza(newPizza);
@@ -87,7 +137,7 @@ const EditPizza = () => {
         key={key}
         type={inputType}
         value={value || ""}
-        onChange={(e) => handleFromChange(e, key)}
+        onChange={(e) => handleInputChange(e, key)}
       />
     );
   };
@@ -95,7 +145,7 @@ const EditPizza = () => {
     return (
       <div>
         <div className="progress">
-        <h2 className="loading">Loading</h2>
+          <h2 className="loading">Loading</h2>
           <div className="color"></div>
         </div>
       </div>
