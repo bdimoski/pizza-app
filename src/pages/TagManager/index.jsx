@@ -11,7 +11,7 @@ const TagManagerPage = () => {
     Api()
       .post("/tags", { tag })
       .then((response) => {
-        console.log(response);
+        //console.log(response);
         setTag("");
         setTags([...tags, { tag }]);
       })

@@ -22,7 +22,7 @@ const ordering = {
     }
     return pizzaCartItems;
   },
-  
+
   removePizzaFromCart(id, selectedPizzaSize, cartItems) {
     const leftOverItems = cartItems.filter(
       (pizza) => !(pizza.id === id && pizza.selectedPizzaSize === selectedPizzaSize)

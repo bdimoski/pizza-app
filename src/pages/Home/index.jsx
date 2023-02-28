@@ -9,7 +9,7 @@ const HomePage = (props) => {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const tags = ["discount", "vege", "house-specialty"];
-  const pageNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const pageNumbers = [1, 2, 3, 4, 5];
   const [checkedState, setCheckedState] = useState(
     new Array(tags.length).fill(false)
   );

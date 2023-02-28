@@ -24,8 +24,8 @@ const EditPizza = () => {
       .map((isChecked, index) => (isChecked ? tags[index] : null))
       .filter(Boolean);
     setPizza({ ...pizza, tags: newTags.length ? newTags : [] });
-    console.log("Tags: ", tags);
-    console.log("New Tags", newTags);
+    // console.log("Tags: ", tags);
+    // console.log("New Tags", newTags);
   };
 
   useEffect(() => {
@@ -65,7 +65,7 @@ const EditPizza = () => {
       return;
     }
     const priceRegex = /^[1-9]\d*$/;
-    console.log(pizza);
+    // console.log(pizza);
     if (!priceRegex.test(pizza.priceSmall, pizza.priceBig)) {
       alert("Please enter a valid price.");
       return;
@@ -104,7 +104,7 @@ const EditPizza = () => {
     newPizza[key] = e.target.value;
     setPizza(newPizza);
   };
-  const getCheckBoxes = (value) => {
+  const getCheckBoxes = () => {
     //console.log(value)
     return (
       <div>

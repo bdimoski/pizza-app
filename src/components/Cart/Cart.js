@@ -3,10 +3,9 @@ import { useClickOutside } from "../../hooks/useClickOutside";
 import { CartContext } from "../../context/cartContext";
 import { FiShoppingBag } from 'react-icons/fi';
 const Cart = () => {
-  const { cartItems, removeFromCart, emptyCart, handleOrder } = useContext(CartContext);
-  console.log(cartItems);
+  const { cartItems, removeFromCart, handleOrder } = useContext(CartContext);
+  //console.log(cartItems);
   const [isOpen, setIsOpen] = useState(false);
-
   const cartRef = useRef();
   useClickOutside(cartRef, () => setIsOpen(false));
 
@@ -25,7 +24,7 @@ const Cart = () => {
         ></div>
       )}
       <div
-      id="cart"
+        id="cart"
         ref={cartRef}
         style={{
           position: "absolute",
@@ -40,15 +39,15 @@ const Cart = () => {
           style={{
             display: 'flex',
             marginLeft: 'auto',
-            marginRight:'auto',
-            textAlign:'center',
+            marginRight: 'auto',
+            textAlign: 'center',
           }}
           onClick={() => {
             setIsOpen(!isOpen);
           }}
         >
           {" "}
-          <FiShoppingBag/> {cartItems.length && cartItems.length}
+          <FiShoppingBag /> {cartItems.length && cartItems.length}
         </div>
 
         <div
@@ -72,21 +71,20 @@ const Cart = () => {
               <div>
                 {pizza.selectedPizzaSize === "мала" &&
                   "Price:" +
-                    pizza.priceSmall * pizza.quantity +
-                    "den  -  " +
-                    pizza.quantity}
+                  pizza.priceSmall * pizza.quantity +
+                  "den  -  " +
+                  pizza.quantity}
               </div>
               <div>
                 {pizza.selectedPizzaSize === "голема" &&
                   "Price" +
-                    pizza.priceBig * pizza.quantity +
-                    "den  -  " +
-                    pizza.quantity}
+                  pizza.priceBig * pizza.quantity +
+                  "den  -  " +
+                  pizza.quantity}
               </div>
             </div>
           ))}
-
-          <button onClick={handleOrder} style={{display:'flex', marginLeft:'auto', marginRight:'auto', marginTop:'10px'}}>Order all</button>
+          <button onClick={handleOrder} style={{ display: 'flex', marginLeft: 'auto', marginRight: 'auto', marginTop: '10px' }}>Order all</button>
         </div>
       </div>
     </div>

@@ -13,8 +13,8 @@ const AdminPage = () => {
   const [checkedState, setCheckedState] = useState(
     new Array(tags.length).fill(false)
   );
-  console.log("tags:", tags);
-  console.log("checkedState:", checkedState);
+  //console.log("tags:", tags);
+  //console.log("checkedState:", checkedState);
   const handleIdChange = (e) => setId(e.target.value);
   const handleNameChange = (e) => setName(e.target.value);
   const handlePriceSmallChange = (e) => setPriceSmall(e.target.value);
@@ -25,9 +25,9 @@ const AdminPage = () => {
     const newTags = checkedState
       .map((value, index) => (value ? tags[index] : null))
       .filter((tag) => tag !== null);
-    console.log("newTags:", newTags);
+    //console.log("newTags:", newTags);
     const pizza = { _id, name, priceSmall, priceBig, image, tags: newTags };
-    console.log("image64", image);
+    //console.log("image64", image);
     Api()
       .post("/pizzas", pizza)
       .then(() => alert("Success!"))

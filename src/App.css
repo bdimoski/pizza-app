@@ -196,7 +196,7 @@ nav a {
   border-radius: 15px;
   animation: progres 4s infinite linear;
 }
-.loading{
+.loading {
   display: flex;
   margin: 30px;
   margin-left: auto;

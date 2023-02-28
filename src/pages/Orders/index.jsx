@@ -19,7 +19,7 @@ const OrdersPage = () => {
     Api()
       .delete(`/orders/${orderId}`)
       .then((response) => {
-        console.log("response", response);
+        //console.log("response", response);
         const { data } = response;
         if (data.deletedCount === 1) {
           const newOrders = orders.filter((order) => order._id !== orderId);
@@ -36,7 +36,7 @@ const OrdersPage = () => {
         confirmed: true,
       })
       .then((response) => {
-        console.log("response", response);
+        //console.log("response", response);
         const { data } = response;
         if (data && data.ok === 1) {
           const newOrders = orders.map((order) => {
