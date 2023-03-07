@@ -1,181 +1,27 @@
 body {
   background-color: #1d2322;
 }
-nav {
-  background-color: #00ada4;
-  padding: 20px;
-  color: #f7f7f7;
-}
 
-nav a {
-  color: #f7f7f7;
-  text-decoration: none;
-}
-
-#pizzaMenu {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 100%;
-  position: relative;
-  margin-top: 30px;
-}
-
-#editPizza {
-  color: #fff;
-}
-
-.editForm {
-  display: flex;
-  flex-direction: column;
-  padding: 3rem;
-  background: #052826;
-}
-
-#admin {
-  color: #fff;
-}
-
-#admin > label {
-  width: 100%;
-  display: flex;
-  max-width: 400px;
-}
-
-#admin > label > input {
-  margin-left: auto;
-}
-
-.product {
-  position: relative;
+#tags input[type="checkbox"] + span {
   display: inline-block;
-  width: 22%;
-  text-align: center;
-  height: 450px;
-  margin-bottom: 20px;
-}
-
-.product img {
-  width: 80%;
-  height: 60%;
-}
-.product h2 {
-  color: white;
-}
-
-.product button {
-  border: none;
-  padding: 10px;
-}
-
-.product p {
-  height: 60px;
-  color: #f7f7f7;
-}
-
-.priceTag {
-  position: absolute;
-  top: 10px;
-  left: 30px;
-  background-color: #ffc600;
-  color: #f7f7f7;
-  width: 150px;
-  border-radius: 5px;
-  padding: 5px;
-  font-weight: bold;
-  font-size: 14px;
-}
-.productDetails {
-  display: flex;
-  justify-content: center;
-  gap: 100px;
-  color: #f7f7f7;
-  margin-top: 30px;
-}
-
-.quantitySelector {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-right: 5px;
+  vertical-align: middle;
   background-color: white;
-  width: 60px;
-  color: black;
-  font-size: x-large;
-  border-radius: 10px;
-  padding: 2px;
-  display: inline-block;
-  vertical-align: middle;
 }
 
-#order-btn {
-  border: 0;
-  border-radius: 10px;
-  padding: 10px;
-  width: 160px;
-  margin: 5px;
-  vertical-align: middle;
+#tags input[type="checkbox"]:checked + span {
+  content: "\2713";
+  font-size: 14px;
+  color: #fff;
   background-color: #00ada4;
-  color: #f7f7f7;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.order-wrap {
-  padding: 16px;
-}
-.order {
-  position: relative;
-  border: 0;
-  border-radius: 10px;
-  padding: 10px;
-  width: 400px;
-  margin: 5px;
-  vertical-align: middle;
-  background-color: #00ada4;
-  color: #fff;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.order-confirmed {
-  position: relative;
-  border: 0;
-  border-radius: 10px;
-  padding: 10px;
-  width: 400px;
-  margin: 5px;
-  vertical-align: middle;
-  color: #fff;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: green;
-}
-
-.deleteBtn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-}
-
-#tags {
-  color: #fff;
   text-align: center;
-  padding: 10px;
-}
-#tags > label {
-  padding: 10px;
-}
-#search {
-  color: #fff;
-  text-align: center;
+  line-height: 16px;
 }
 
-#cart {
-  padding: 6px 11px 6px 18px;
-  border-radius: 3em;
-  display: flex;
-  flex-direction: column;
-  margin-left: auto;
-  margin-right: auto;
-}
 .progress {
   position: relative;
   height: 10px;
@@ -219,4 +65,19 @@ nav a {
   50% {
     width: 100%;
   }
-} ;
+}
+.animate-fade-in {
+  animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.toggle__dot {
+  transition: transform 0.3s;
+}

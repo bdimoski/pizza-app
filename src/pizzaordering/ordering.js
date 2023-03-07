@@ -1,5 +1,6 @@
 const ordering = {
   addPizzaToCart(id, quantity, selectedPizzaSize, cartItems, pizzaProducts) {
+    console.log(id)
     const pizzaToAdd = pizzaProducts.find(
       (pizza) => pizza.id === id);
     const addedPizza = cartItems.find(
