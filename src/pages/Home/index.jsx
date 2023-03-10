@@ -98,14 +98,16 @@ const HomePage = (props) => {
         {pizzaProducts.map((pizza) => (
           <div
             key={pizza._id}
-            className="bg-white rounded-lg shadow-md overflow-hidden w-[250px] my-2 mx-auto"
+            className="rounded-lg shadow-xl bg-[#1E2221] overflow-hidden w-[250px] my-2 mx-auto transition duration-300 hover:bg-[#2a3130]"
           >
             <div className="relative">
+            <Link to={pizza.name}>
               <img
                 src={pizza.image}
                 alt={pizza.name}
-                className="w-full h-48 object-cover hover:transform hover:scale-105 transition-all duration-300 ease-in-out"
+                className="w-full h-48 object-cover hover:transform hover:scale-105 transition-all duration-300 ease-in-out p-3"
               />
+              </Link>
               <div
                 className={`absolute top-0 right-0 text-white font-bold py-3 px-4 rounded-bl-lg transition-all ${
                   !pizza.tags.includes("isBestSeller") &&
@@ -135,13 +137,13 @@ const HomePage = (props) => {
                   )}
               </div>
             </div>
-            <div className="p-4">
-              <h2 className="font-bold text-xl mb-2">{pizza.name}</h2>
-              <p className="text-gray-700 text-base">{pizza.ingredients}</p>
+            <div className="p-4 flex flex-col text-center">
+              <h2 className="font-bold text-xl mb-2 text-white">{pizza.name}</h2>
+              <p className="text-[#6e6c6c] text-base h-[100px] flex items-center">{pizza.ingredients}</p>
               <div className="mt-4">
-                <div className="text-lg font-bold text-gray-800">
+                {/* <div className="text-lg font-bold text-[#cfc9c9]">
                   {pizza.priceSmall} den - {pizza.priceBig} den
-                </div>
+                </div> */}
                 <div className="mt-4 flex justify-around">
                   <Link to={pizza.name}>
                     <button className="text-white py-2 px-4 rounded-full transition duration-300 bg-gradient-to-r from-teal-400 to-teal-500 hover:from-teal-400 hover:to-teal-600 focus:from-gray-400 focus:to-gray-600 focus:outline-none transform hover:-translate-y-1 hover:scale-110">
