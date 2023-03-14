@@ -1,10 +1,10 @@
 const ordering = {
   addPizzaToCart(id, quantity, selectedPizzaSize, cartItems, pizzaProducts) {
-    console.log(id)
+    //console.log(id)
     const pizzaToAdd = pizzaProducts.find(
-      (pizza) => pizza.id === id);
+      (pizza) => pizza._id === id);
     const addedPizza = cartItems.find(
-      (pizza) => pizza.id === id && pizza.selectedPizzaSize === selectedPizzaSize);
+      (pizza) => pizza._id === id && pizza.selectedPizzaSize === selectedPizzaSize);
     let pizzaCartItems;
     if (addedPizza) {
       addedPizza.quantity += quantity;
@@ -21,6 +21,7 @@ const ordering = {
         },
       ];
     }
+    //console.log(pizzaCartItems)
     return pizzaCartItems;
   },
 

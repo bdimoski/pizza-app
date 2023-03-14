@@ -65,7 +65,7 @@ const AdminPage = () => {
   };
 
   return (
-    <div className="adminPanel bg-gray-200 rounded-md shadow-md p-4 h-screen">
+    <div className="adminPanel bg-gray-200 rounded-md shadow-md p-4">
       <div className="flex flex-col space-y-4">
         <div className="mx-auto border border-gray-400 w-[60%] rounded-md p-2">
           <h3 className="text-lg font-bold text-white text-center bg-gray-600 rounded-md px-4 py-2 mb-4">

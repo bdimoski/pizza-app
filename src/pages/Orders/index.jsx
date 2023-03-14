@@ -90,7 +90,7 @@ const OrdersPage = () => {
           .map((order) => (
             <div
               key={order._id}
-              className="w-full max-w-lg mx-auto rounded-md shadow-md overflow-hidden"
+              className="w-full max-w-lg mx-auto mt-4 rounded-md shadow-md overflow-hidden"
             >
               <div
                 className={`px-4 py-3 flex items-center mt-4 justify-between bg-gray-100 ${

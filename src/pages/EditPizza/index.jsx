@@ -167,13 +167,13 @@ const EditPizza = () => {
   return (
     <div className="editPizza bg-gray-200 rounded-md shadow-md p-4">
       <div className="flex flex-col space-y-4">
-        <div className="flex flex-col space-y-1 text-black w-[60%] mx-auto">
-          <div className="border border-gray-400 rounded-md p-2">
+        <div className="w-full mx-auto">
+          <div className="border border-gray-400 rounded-md p-2 sm:w-[80%] md:w-[60%] lg:w-[50%] xl:w-[60%] mx-auto">
             <h3 className="text-lg font-bold text-white text-center bg-gray-600 rounded-md px-4 py-2 mb-4">
               Pizza Details JSON
             </h3>
             {Object.entries(pizza).map(([key, value]) => (
-              <div key={key} className="flex flex-row space-x-1">
+              <div key={key} className="flex flex-row space-x-1 overflow-hidden">
                 <span className="text-gray-500">
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"{key}"&nbsp;&nbsp;:
                 </span>
@@ -182,7 +182,7 @@ const EditPizza = () => {
             ))}
           </div>
         </div>
-        <div className="editForm mx-auto border border-gray-400 w-[60%] rounded-md p-2">
+        <div className="editForm mx-auto border border-gray-400 sm:w-[80%] md:w-[60%] lg:w-[50%] xl:w-[60%] rounded-md p-2">
           <h3 className="text-lg font-bold text-white text-center bg-gray-600 rounded-md px-4 py-2 mb-4">
             Edit Pizza
           </h3>

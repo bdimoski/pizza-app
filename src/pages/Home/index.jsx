@@ -33,7 +33,8 @@ const HomePage = (props) => {
     const newTags = _checkedState
       .map((value, index) => (value ? tags[index] : null))
       .filter((tag) => tag !== null);
-    // console.log('new tags: ', newTags);
+      // console.log('new tags: ', newTags); 
+      // console.log('page number: ', page); 
 
     Api()
       .get(

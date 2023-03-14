@@ -98,7 +98,7 @@ function Pizza() {
 
           <button
             id="order-btn"
-            onClick={() => addToCart(currentPizza.id, counter, pizzaSize)}
+            onClick={() => addToCart(currentPizza._id, counter, pizzaSize)}
             className="bg-teal-500 hover:bg-teal-600 text-white py-2 px-6 rounded-md shadow-md transition-colors duration-300"
           >
             Buy Pizza
